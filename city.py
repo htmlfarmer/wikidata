@@ -1,4 +1,6 @@
-# to do https://www.wikidata.org/wiki/Property:P625 add lat long!
+if latitude is not None and longitude is not None:
+    print("Latitude:", latitude)
+    print("Longitude:", longitude)
 
 from wikidata.client import Client
 
