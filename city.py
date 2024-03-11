@@ -1,3 +1,5 @@
+# to do https://www.wikidata.org/wiki/Property:P625 add lat long!
+
 from wikidata.client import Client
 
 import requests
@@ -12,7 +14,7 @@ WHERE {
   SERVICE wikibase:around {
     ?city wdt:P625 ?cityCoord.
     bd:serviceParam wikibase:center "Point(-43.1729 -22.9068)"^^geo:wktLiteral.
-    bd:serviceParam wikibase:radius "50".
+    bd:serviceParam wikibase:radius "500".
   }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
@@ -44,7 +46,9 @@ if response.status_code == 200:
     for result in data['results']['bindings']:
         city_name = result['cityLabel']['value']
         population = result['population']['value']
+        coord = result['coord']['value']
         print("City:", city_name)
         print("Population:", population)
+        print("Coordinates:", coord)
 else:
     print("Failed to retrieve data. Status code:", response.status_code)
