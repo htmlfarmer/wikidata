@@ -1,7 +1,3 @@
-if latitude is not None and longitude is not None:
-    print("Latitude:", latitude)
-    print("Longitude:", longitude)
-
 from wikidata.client import Client
 
 import requests
